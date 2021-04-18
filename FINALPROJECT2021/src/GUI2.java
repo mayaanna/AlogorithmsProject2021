@@ -68,7 +68,7 @@ public class GUI2 extends JFrame {
 		btnNewButton_1.setBounds(396, 180, 117, 56);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblPleaseChooseThe = new JLabel("Please choose the program you wish to run or press exit:");
+		JLabel lblPleaseChooseThe = new JLabel("Please choose the program you wish to run, or press exit:");
 		lblPleaseChooseThe.setBounds(40, 19, 378, 16);
 		contentPane.add(lblPleaseChooseThe);
 		
