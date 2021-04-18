@@ -68,7 +68,7 @@ public class GUI2 extends JFrame {
 		btnNewButton_1.setBounds(396, 180, 117, 56);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblPleaseChooseThe = new JLabel("Please choose the program you wish to run, or press exit:");
+		JLabel lblPleaseChooseThe = new JLabel("Please choose the program you wish to run or press exit:");
 		lblPleaseChooseThe.setBounds(40, 19, 378, 16);
 		contentPane.add(lblPleaseChooseThe);
 		
@@ -80,7 +80,7 @@ public class GUI2 extends JFrame {
 		btnNewButton_2.setBounds(24, 176, 312, 64);
 		contentPane.add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("Stop Information Matching Search Criteria");
+		JButton btnNewButton_3 = new JButton("Stop Information Matching Given Search Criteria");
 		btnNewButton_3.setBounds(331, 85, 301, 47);
 		contentPane.add(btnNewButton_3);
 	}
