@@ -7,6 +7,89 @@
   Maximum time allowed is 23:59:59
 """
     
+
+import java.util.*;
+
+
+import java.io.*;
+import java.text.*;
+
+public class sortBusTimes {
+
+	public static void main(String[] args) throws ParseException, IOException {
+		// TODO Auto-generated method stub
+
+		String tempFile = "temp.txt";
+		String invalidTime = "24:00:00";
+		String filepath = "stop_times.txt";
+		File oldFile = new File(filepath);
+		File newFile = new File(tempFile);
+		
+		String tripID = "";
+		String arrivalTime = "";
+		String departureTime = "";
+		String stopID = "";
+		String stopSequence = "";
+		String stopHeadSign = "";
+		String pickupType = "";
+		String dropoffType = "";
+		String shapeDistTraveled = "";
+
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(filepath));
+			FileWriter x = new FileWriter(tempFile, true);
+			BufferedWriter y = new BufferedWriter(x);
+			PrintWriter z = new PrintWriter(y);
+			Scanner scanner = new Scanner(new File(filepath));
+			scanner.useDelimiter("[,\n]");
+
+			while(scanner.hasNext())
+			{
+
+				tripID = scanner.next();
+				arrivalTime = scanner.next();
+				departureTime = scanner.next();
+				stopID = scanner.next();
+				stopSequence = scanner.next();
+				stopHeadSign = scanner.next();
+				pickupType = scanner.next();
+				dropoffType = scanner.next();
+				shapeDistTraveled = scanner.next();
+
+
+
+				if(arrivalTime.compareTo(invalidTime) < 0) // if arrival time is less than an invalid time
+				{
+
+					z.println(tripID + " " + arrivalTime + " " + departureTime + " " + stopID + " " + 
+							stopSequence + " " + stopHeadSign + " " + pickupType + " " + dropoffType + " " 
+							+ shapeDistTraveled);	
+
+				}
+			}		
+			scanner.close();
+			z.flush();
+			z.close();
+			oldFile.delete();
+			File dump = new File(filepath);
+			newFile.renameTo(dump);
+						
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+
     
     
   
