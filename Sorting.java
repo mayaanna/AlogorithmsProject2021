@@ -9,8 +9,7 @@
     
 
 import java.util.*;
-
-
+import java.text.ParseException;
 import java.io.*;
 import java.text.*;
 
@@ -96,6 +95,57 @@ public class sortBusTimes {
 	}
 
 }
+
+"""
+	Below main line will print out all the stop information matching
+        the given arrival time inputed by user.
+	Each line gets printed in order it appears in the original "stop_times.txt" 
+	so we need to use some sorting algorithm to get the output ordered from i presume
+	smallest trip Id to largest.
+
+"""
+	
+	
+
+public class Sorting {
+
+	
+	public static void main(String[] args) throws ParseException {	
+		String line = "";
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter prefered arrival time in the format'hh:mm:ss'");
+
+		String userInput = input.nextLine();
+
+		try {
+			@SuppressWarnings("resource")
+			BufferedReader br = new BufferedReader(new FileReader("stop_times.txt"));
+			while((line = br.readLine()) != null)
+			{
+				String [] stops = line.split(" ");
+				String arrivalTime = stops[1];
+
+				if(userInput.equals(arrivalTime))
+				{	
+					System.out.println(line);
+				}
+			}
+		
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		input.close();
+	}
+}
+
+	
 
 
     
