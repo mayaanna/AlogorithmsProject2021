@@ -37,7 +37,7 @@ public class sortBusTimes {
 
 		try
 		{
-			BufferedReader br = new BufferedReader(new FileReader(filepath));
+
 			FileWriter x = new FileWriter(tempFile, true);
 			BufferedWriter y = new BufferedWriter(x);
 			PrintWriter z = new PrintWriter(y);
