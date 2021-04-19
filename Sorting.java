@@ -21,6 +21,7 @@ public class sortBusTimes {
 
 		String tempFile = "temp.txt";
 		String invalidTime = "24:00:00";
+		String singleDigitTime = "10:00:00";
 		String filepath = "stop_times.txt";
 		File oldFile = new File(filepath);
 		File newFile = new File(tempFile);
@@ -61,13 +62,20 @@ public class sortBusTimes {
 
 				if(arrivalTime.compareTo(invalidTime) < 0) // if arrival time is less than an invalid time
 				{
-
-					z.println(tripID + " " + arrivalTime + " " + departureTime + " " + stopID + " " + 
+                                    if(arrivalTime.compareTo(singleDigitTime) < 0) 
+					{
+					z.println(tripID + "" + arrivalTime + " " + departureTime + " " + stopID + " " + 
 							stopSequence + " " + stopHeadSign + " " + pickupType + " " + dropoffType + " " 
 							+ shapeDistTraveled);	
-
-				}
-			}		
+				        }
+					else
+					{
+						z.println(tripID + " " + arrivalTime + " " + departureTime + " " + stopID + " " + 
+								stopSequence + " " + stopHeadSign + " " + pickupType + " " + dropoffType + " " 
+								+ shapeDistTraveled);	
+					}
+			       }
+			}
 			scanner.close();
 			z.flush();
 			z.close();
