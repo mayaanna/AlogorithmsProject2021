@@ -98,14 +98,8 @@ public class sortBusTimes {
 
 """
 	Below main line will print out all the stop information matching
-        the given arrival time inputed by user.
-	Each line gets printed in order it appears in the original "stop_times.txt" 
-	so we need to use some sorting algorithm to get the output ordered from i presume
-	smallest trip Id to largest.
-
+        the given arrival time inputed by user, ordered by trip_id in ascending order.
 """
-	
-	
 
 public class Sorting {
 
@@ -113,6 +107,7 @@ public class Sorting {
 	public static void main(String[] args) throws ParseException {	
 		String line = "";
 		Scanner input = new Scanner(System.in);
+		List<String> output = new ArrayList<String>();
 		System.out.println("Please enter prefered arrival time in the format'hh:mm:ss'");
 
 		String userInput = input.nextLine();
@@ -127,10 +122,10 @@ public class Sorting {
 
 				if(userInput.equals(arrivalTime))
 				{	
-					System.out.println(line);
+					output.add(line + "\n");
 				}
 			}
-		
+		input.close();
 		}
 		catch(FileNotFoundException e)
 		{
@@ -140,8 +135,11 @@ public class Sorting {
 		{
 			e.printStackTrace();
 		}
+		
+		Collections.sort(output);
+		System.out.println("Here is a list of all trips arrival at your given time: " + output);
 
-		input.close();
+		
 	}
 }
 
