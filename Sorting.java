@@ -103,15 +103,20 @@ public class sortBusTimes {
 
 public class Sorting {
 
-	
+
 	public static void main(String[] args) throws ParseException {	
+			
+		sortArrivalTime();	
+		
+	}
+		static void sortArrivalTime()
+		{
+		
 		String line = "";
-		Scanner input = new Scanner(System.in);
+		
 		List<String> output = new ArrayList<String>();
-		System.out.println("Please enter prefered arrival time in the format'hh:mm:ss'");
-
-		String userInput = input.nextLine();
-
+		String userInput = JOptionPane.showInputDialog("Please enter prefered arrival time in the format'hh:mm:ss'");
+		
 		try {
 			@SuppressWarnings("resource")
 			BufferedReader br = new BufferedReader(new FileReader("stop_times.txt"));
@@ -119,13 +124,15 @@ public class Sorting {
 			{
 				String [] stops = line.split(" ");
 				String arrivalTime = stops[1];
-
+				
+				
 				if(userInput.equals(arrivalTime))
-				{	
-					output.add(line + "\n");
+				{
+					output.add(line + "\n");	
 				}
 			}
-		input.close();
+
+			
 		}
 		catch(FileNotFoundException e)
 		{
@@ -135,17 +142,17 @@ public class Sorting {
 		{
 			e.printStackTrace();
 		}
-		
 		Collections.sort(output);
-		System.out.println("Here is a list of all trips arrival at your given time: " + output);
-
 		
+		JOptionPane.showMessageDialog(null, "Here is a list of all trips arrival at your given time: " + "\n" + Arrays.toString(output.toArray()).replace("[","").replace("]","").replace(", ",""));
+		
+		
+		System.exit(0);
+
 	}
+		
 }
 
-	
 
 
-    
-    
-  
+
