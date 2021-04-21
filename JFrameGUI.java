@@ -63,6 +63,8 @@ public class GUIFrame extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Exit");
+		btnNewButton_1.setForeground(new Color(255, 0, 0));
+		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
