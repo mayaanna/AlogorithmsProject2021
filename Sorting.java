@@ -103,6 +103,9 @@ public class sortBusTimes {
 
 public class Sorting {
 
+	static String invalidTime = "24:00:00";
+	static String invalidTime2 = "00:00:00";
+	static boolean valid = false;
 
 	public static void main(String[] args) throws ParseException {	
 			
@@ -124,12 +127,20 @@ public class Sorting {
 			{
 				String [] stops = line.split(" ");
 				String arrivalTime = stops[1];
-				
-				
-				if(userInput.equals(arrivalTime))
+				if(userInput.compareTo(invalidTime) < 0 && userInput.compareTo(invalidTime2) > 0)
 				{
+					valid = true;
+
+				
+				    if(userInput.equals(arrivalTime))
+				    {
 					output.add(line + "\n");	
-				}
+				    }
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Invalid Time Entered");
+					break;
+				}	
 			}
 
 			
@@ -142,10 +153,12 @@ public class Sorting {
 		{
 			e.printStackTrace();
 		}
+			
+	if(valid == true)
+		{		
 		Collections.sort(output);
-		
 		JOptionPane.showMessageDialog(null, "Here is a list of all trips arrival at your given time: " + "\n" + Arrays.toString(output.toArray()).replace("[","").replace("]","").replace(", ",""));
-		
+	}
 		
 		System.exit(0);
 
