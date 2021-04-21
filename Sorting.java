@@ -157,7 +157,7 @@ public class Sorting {
 	if(valid == true)
 		{		
 		Collections.sort(output);
-		JOptionPane.showMessageDialog(null, "Here is a list of all trips arrival at your given time: " + "\n" + Arrays.toString(output.toArray()).replace("[","").replace("]","").replace(", ",""));
+		JOptionPane.showMessageDialog(null, "Here is a list of all trips arriving at your given time: " + "\n" + Arrays.toString(output.toArray()).replace("[","").replace("]","").replace(", ",""));
 	}
 		
 		System.exit(0);
