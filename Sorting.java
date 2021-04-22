@@ -43,6 +43,7 @@ public class sortBusTimes {
 			PrintWriter z = new PrintWriter(y);
 			Scanner scanner = new Scanner(new File(filepath));
 			scanner.useDelimiter("[,\n]");
+			scanner.nextLine();
 
 			while(scanner.hasNext())
 			{
