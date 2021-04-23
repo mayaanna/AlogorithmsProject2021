@@ -113,7 +113,7 @@ public class Sorting {
 		sortArrivalTime();	
 		
 	}
-		static void sortArrivalTime()
+		public static void sortArrivalTime()
 		{
 		
 		String line = "";
