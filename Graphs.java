@@ -9,5 +9,8 @@
   2 if it comes from transfers.txt with transfer type 0 (which is immediate transfer possible),
   and for transfer type 2 the cost is the minimum transfer time divided by 100.
 """
-public class ShortestPath {
-}
+
+    public class ShortestPath {
+      
+    
+    }
