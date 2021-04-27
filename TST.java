@@ -158,6 +158,192 @@ public class deleteRecord2 {
 	}
 
 }
+/// I keep getting a null pointer exception in main line
+/// stop information is not being printed for the user
+/// need to add an option to search by first few characters of stop name only 
+public class TST<Value> 
+{
+	private tstNode<Value> root;
+	private int N; 
+
+
+	private static class tstNode<Value> 
+	{
+		private char character;                        	   
+		private tstNode<Value> left; 			   
+		private tstNode<Value> mid;			   
+		private tstNode<Value> right;			   
+		private Value val;                         
+	}
+
+
+	public TST() {
+		
+    }
+	
+	public int size() {
+        return N;
+    }
+	public boolean contains(String key) 
+	{
+		
+			if (key == null)
+				return false;
+		
+		return get(key) != null;
+
+	}
+
+	public Value get(String key) 
+	{
+
+		if (key == null) 
+		{
+			return null;
+		}
+
+		if (key.length() == 0) 
+		{
+			return null;
+		}
+
+		tstNode<Value> x = get(root, key, 0);
+
+		if (x == null) 
+			return null;
+
+		return x.val;
+
+
+	}
+
+
+
+	private tstNode<Value> get(tstNode<Value> y, String key, int d) 
+	{
+		if (y == null)
+		{
+			return null;
+		}
+
+		char c = key.charAt(d);
+
+		if (c < y.character)              
+			return get(y.left,  key, d);
+
+		else if (c > y.character)
+			return get(y.right, key, d);
+
+		else if (d < key.length() - 1)
+			return get(y.mid,   key, d+1);
+
+		else
+			return y;
+	}
+
+	private tstNode<Value> put(tstNode<Value> x, String key, Value val, int d) 
+	{
+		char c = key.charAt(d);
+		if (x == null) 
+		{
+			x = new tstNode<Value>();
+			x.character = c;
+		}
+
+		if (c < x.character)              
+			x.left  = put(x.left,  key, val, d);
+
+		else if (c > x.character)               
+			x.right = put(x.right, key, val, d);
+
+		else if (d < key.length() - 1)  
+			x.mid   = put(x.mid,   key, val, d+1);
+
+		else                            
+			x.val   = val;
+
+		return x;
+	}
+	public void put(String key, Value val) 
+	{
+		try {
+			if (!contains(key))
+				N++;
+
+			root = put(root, key, val, 0);
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("NullPointerException thrown!");
+		}
+	}
+
+
+	public static void main(String[] args) {
+
+		Scanner scanner = new Scanner (System.in);
+
+		TST<String> trie = new TST<String>(); 
+		String line = "";
+		File filepath = new File("stops.txt");
+
+		try
+		{
+			
+			BufferedReader br = new BufferedReader(new FileReader(filepath));
+			while((line = br.readLine()) != null)
+			{
+				String[] stops = line.split(",");
+				String stopName = stops[2];
+
+				String stopInformation = "// Stop id:" + stops[0] + "// Stop Code: " + stops[1] + "// Stop Desc: " + stops[3] + "//Stop Lat: " + stops[4] + "//Stop Lon: " + stops[5] + "// Zone id: " + stops[6];
+
+				trie.put(stopName, stopInformation);
+
+			}
+			br.close();
+
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		
+		System.out.println("Please enter the bus stop name you wish to search for");
+
+		String userInput  = scanner.nextLine();
+
+		if(trie.contains(userInput))
+		{
+			System.out.println(userInput + trie.get(userInput));
+
+		}
+		else
+		{	
+			System.out.println( "Bus stop entered does not exist \n" + 
+					"Please enter a valid Bus Stop");
+
+		}
+
+		
+		scanner.close();
+		
+
+	}
+
+
+
+}
+
+
+
+
+
 
 
 
