@@ -23,6 +23,10 @@ public class deleteRecord2 {
 	public static void main(String[] args) throws ParseException, IOException {
 		// TODO Auto-generated method stub
 
+		delete();
+	}
+	public static void delete()
+	{
 
 		String tempFile = "temp.txt";
 		String filepath = "stops.txt";
@@ -158,6 +162,9 @@ public class deleteRecord2 {
 	}
 
 }
+
+
+
 /// I keep getting a null pointer exception in main line
 /// stop information is not being printed for the user
 /// need to add an option to search by first few characters of stop name only 
@@ -165,7 +172,12 @@ public class TST<Value>
 {
 	private tstNode<Value> root;
 	private int N; 
+	
+	public static void main(String[] args) throws ParseException {	
+                deleteRecord2.delete();
+		stopsTST();	
 
+	}
 
 	private static class tstNode<Value> 
 	{
@@ -279,7 +291,7 @@ public class TST<Value>
 	}
 
 
-	public static void main(String[] args) {
+	public static void stopsTST() {
 
 		Scanner scanner = new Scanner (System.in);
 
@@ -339,6 +351,10 @@ public class TST<Value>
 
 
 }
+
+
+
+
 
 
 
