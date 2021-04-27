@@ -83,7 +83,7 @@ public class GUIFrame extends JFrame {
 		JButton btnNewButton_2 = new JButton("All Trips With A Given Arrival Time");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				deleteRecord.delete();
+				
 				Sorting.sortArrivalTime();
 			}
 		});
