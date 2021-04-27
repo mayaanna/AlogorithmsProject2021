@@ -118,7 +118,7 @@ public class Sorting {
 
 	public static void main(String[] args) throws ParseException {	
 		
-		deleteRecord.delete();	
+		
 		sortArrivalTime();	
 		
 	}
