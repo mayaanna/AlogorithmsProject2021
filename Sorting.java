@@ -15,16 +15,19 @@ import java.text.*;
 
 public class sortBusTimes {
 
-	public static void main(String[] args) throws ParseException, IOException {
+public static void main(String[] args) throws ParseException, IOException {
 		// TODO Auto-generated method stub
-
+		delete();
+	}
+		public static void delete()
+		{
 		String tempFile = "temp.txt";
 		String invalidTime = "24:00:00";
 		String singleDigitTime = "10:00:00";
 		String filepath = "stop_times.txt";
 		File oldFile = new File(filepath);
 		File newFile = new File(tempFile);
-		
+	
 		String tripID = "";
 		String arrivalTime = "";
 		String departureTime = "";
@@ -34,7 +37,7 @@ public class sortBusTimes {
 		String pickupType = "";
 		String dropoffType = "";
 		String shapeDistTraveled = "";
-
+	
 		try
 		{
 
@@ -47,7 +50,6 @@ public class sortBusTimes {
 
 			while(scanner.hasNext())
 			{
-
 				tripID = scanner.next();
 				arrivalTime = scanner.next();
 				departureTime = scanner.next();
@@ -57,32 +59,31 @@ public class sortBusTimes {
 				pickupType = scanner.next();
 				dropoffType = scanner.next();
 				shapeDistTraveled = scanner.next();
-
-
-
+				
 				if(arrivalTime.compareTo(invalidTime) < 0) // if arrival time is less than an invalid time
 				{
-                                    if(arrivalTime.compareTo(singleDigitTime) < 0) 
+					if(arrivalTime.compareTo(singleDigitTime) < 0)
 					{
 					z.println(tripID + "" + arrivalTime + " " + departureTime + " " + stopID + " " + 
 							stopSequence + " " + stopHeadSign + " " + pickupType + " " + dropoffType + " " 
 							+ shapeDistTraveled);	
-				        }
+				}
 					else
 					{
 						z.println(tripID + " " + arrivalTime + " " + departureTime + " " + stopID + " " + 
 								stopSequence + " " + stopHeadSign + " " + pickupType + " " + dropoffType + " " 
 								+ shapeDistTraveled);	
 					}
-			       }
+				}
 			}
+
 			scanner.close();
 			z.flush();
 			z.close();
 			oldFile.delete();
 			File dump = new File(filepath);
 			newFile.renameTo(dump);
-						
+
 		}
 		catch(FileNotFoundException e)
 		{
@@ -93,9 +94,16 @@ public class sortBusTimes {
 			e.printStackTrace();
 		}
 
+
+
 	}
 
 }
+
+
+
+
+
 
 """
 	Below main line will print out all the stop information matching
@@ -109,7 +117,8 @@ public class Sorting {
 	static boolean valid = false;
 
 	public static void main(String[] args) throws ParseException {	
-			
+		
+		deleteRecord.delete();	
 		sortArrivalTime();	
 		
 	}
