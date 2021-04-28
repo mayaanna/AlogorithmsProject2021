@@ -180,10 +180,7 @@ public class TernarySearch<Value>
 	private tstNode<Value> root;
 	private int N; 
 
-	public static void main(String[] args) throws ParseException  {	
-		stopsTST();
-		
-	}
+	
 	public static void stopsTST()
 	{
 
@@ -237,6 +234,63 @@ public class TernarySearch<Value>
 		}
 
 
+
+	}
+
+public static void fewCharSearch()
+	{
+
+
+		TernarySearch<String> tree = new TernarySearch<String>(); 
+		String line = "";
+		File filepath = new File("stops.txt");
+
+		try
+		{
+
+			BufferedReader br = new BufferedReader(new FileReader(filepath));
+			while((line = br.readLine()) != null)
+			{
+				String[] stops = line.split(",");
+				String stopName = stops[2];
+				String[] name = stopName.split(" ");
+				String stopName2 = name[0];
+
+
+
+				String stopInformation = "Stop id: " + stops[0] + "," + " Stop Code: " + stops[1]  + "," + " Stop Desc: " + stops[3] + ", "+ " Stop Lat: " + stops[4] + ", " + " Stop Lon: " + stops[5] + ", " + " Zone id: " + stops[6];
+
+				tree.put(stopName2, stopInformation);
+
+			}
+			br.close();
+
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+
+
+		String userInput2 =  JOptionPane.showInputDialog("Please Enter First Word Of Bus Stop Name You Wish To Search For");
+
+
+		if(tree.contains(userInput2))
+		{
+			JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + userInput2 + "\n" + tree.get(userInput2));
+
+		}
+		else
+		{	
+			JOptionPane.showMessageDialog(null, "Bus stop entered does not exist \n" + 
+					"Please enter a valid Bus Stop");
+
+		}
 
 	}
 
