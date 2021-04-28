@@ -163,21 +163,85 @@ public class deleteRecord2 {
 
 }
 
-
-
-/// I keep getting a null pointer exception in main line
-/// stop information is not being printed for the user
 /// need to add an option to search by first few characters of stop name only 
-public class TST<Value> 
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class TernarySearch<Value> 
 {
 	private tstNode<Value> root;
 	private int N; 
-	
-	public static void main(String[] args) throws ParseException {	
-                deleteRecord2.delete();
-		stopsTST();	
+
+	public static void main(String[] args) throws ParseException  {	
+		stopsTST();
+		
+	}
+	public static void stopsTST()
+	{
+
+		
+
+		TernarySearch<String> trie = new TernarySearch<String>(); 
+		String line = "";
+		File filepath = new File("stops.txt");
+
+		try
+		{
+
+			BufferedReader br = new BufferedReader(new FileReader(filepath));
+			while((line = br.readLine()) != null)
+			{
+				String[] stops = line.split(",");
+				String stopName = stops[2];
+
+				String stopInformation = "Stop id: " + stops[0] + "," + " Stop Code: " + stops[1]  + "," + " Stop Desc: " + stops[3] + ", "+ " Stop Lat: " + stops[4] + ", " + " Stop Lon: " + stops[5] + ", " + " Zone id: " + stops[6];
+
+				trie.put(stopName, stopInformation);
+
+			}
+			br.close();
+
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+
+		String userInput  =  JOptionPane.showInputDialog("Please Enter The Bus Stop Name You Wish To Search For");
+
+		
+
+		if(trie.contains(userInput))
+		{
+			JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + userInput + "\n" + trie.get(userInput));
+
+		}
+		else
+		{	
+			JOptionPane.showMessageDialog(null, "Bus stop entered does not exist \n" + 
+					"Please enter a valid Bus Stop");
+
+		}
+
+
 
 	}
+
+
+
 
 	private static class tstNode<Value> 
 	{
@@ -189,19 +253,19 @@ public class TST<Value>
 	}
 
 
-	public TST() {
-		
-    }
-	
+	public TernarySearch() {
+
+	}
+
 	public int size() {
-        return N;
-    }
+		return N;
+	}
 	public boolean contains(String key) 
 	{
-		
-			if (key == null)
-				return false;
-		
+
+		if (key == null)
+			return false;
+
 		return get(key) != null;
 
 	}
@@ -276,6 +340,7 @@ public class TST<Value>
 
 		return x;
 	}
+
 	public void put(String key, Value val) 
 	{
 		try {
@@ -291,66 +356,11 @@ public class TST<Value>
 	}
 
 
-	public static void stopsTST() {
-
-		Scanner scanner = new Scanner (System.in);
-
-		TST<String> trie = new TST<String>(); 
-		String line = "";
-		File filepath = new File("stops.txt");
-
-		try
-		{
-			
-			BufferedReader br = new BufferedReader(new FileReader(filepath));
-			while((line = br.readLine()) != null)
-			{
-				String[] stops = line.split(",");
-				String stopName = stops[2];
-
-				String stopInformation = "// Stop id:" + stops[0] + "// Stop Code: " + stops[1] + "// Stop Desc: " + stops[3] + "//Stop Lat: " + stops[4] + "//Stop Lon: " + stops[5] + "// Zone id: " + stops[6];
-
-				trie.put(stopName, stopInformation);
-
-			}
-			br.close();
-
-		}
-		catch(FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		
-		System.out.println("Please enter the bus stop name you wish to search for");
-
-		String userInput  = scanner.nextLine();
-
-		if(trie.contains(userInput))
-		{
-			System.out.println(userInput + trie.get(userInput));
-
-		}
-		else
-		{	
-			System.out.println( "Bus stop entered does not exist \n" + 
-					"Please enter a valid Bus Stop");
-
-		}
-
-		
-		scanner.close();
-		
-
-	}
 
 
 
 }
+
 
 
 
