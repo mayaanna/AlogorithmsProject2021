@@ -91,6 +91,24 @@ public class GUIFrame extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Stop Information Matching Given Search Criteria");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int choice = Integer.parseInt(JOptionPane.showInputDialog(null, "Do you wish to search by first word of stop name or full stop name? \n Enter 0 for first word "
+						+ "or 1 for full stop name"));
+
+				if(choice == 0)
+				{
+					TernarySearch.fewCharSearch();
+				}
+				else if (choice == 1)
+					TernarySearch.stopsTST();
+
+				else {
+					JOptionPane.showMessageDialog(null, "Invalid option");
+
+				}
+			}
+		});
 		btnNewButton_3.setBounds(320, 85, 313, 47);
 		contentPane.add(btnNewButton_3);
 	}
