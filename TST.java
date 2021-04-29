@@ -280,21 +280,26 @@ public static void fewCharSearch()
 		String userInput2 =  JOptionPane.showInputDialog("Please Enter First Word Of Bus Stop Name You Wish To Search For");
 		String input = userInput2.toUpperCase();
 
+                String ans ="";
+		for(String s : tree.keysWithPrefix(input)){
+			ans += s+tree.get(s) + "\n";
 
-		if(tree.contains(input))
-		{
-			JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + input + "\n" + tree.get(input));
+			if(ans =="" )
+			{
+				JOptionPane.showMessageDialog(null, "Bus stop entered does not exist \n" + 
+						"Please enter a valid Bus Stop");
+			}
 
-		}
-		else
-		{	
-			JOptionPane.showMessageDialog(null, "Bus stop entered does not exist \n" + 
-					"Please enter a valid Bus Stop");
+			
+			else 
+			{	
+				JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + ans);
 
-		}
+
+			}
 
 	}
-
+}
 	private static class tstNode<Value> 
 	{
 		private char character;                        	   
@@ -405,6 +410,27 @@ public static void fewCharSearch()
 		{
 			System.out.println("NullPointerException thrown!");
 		}
+	}
+	public Iterable<String> keysWithGivenPrefix(String prefix) {
+		if (prefix == null) {
+			throw new IllegalArgumentException("calls keysWithGivenPrefix() with a null argument");
+		}
+		Queue<String> queue = new LinkedList<String>();
+		tstNode<Value> x = get(root, prefix, 0);
+		if (x == null) return queue;
+		if (x.val != null) queue.add(prefix);
+		collect(x.mid, new StringBuilder(prefix), queue);
+		return queue;
+	}
+
+
+	private void collect(tstNode<Value> x, StringBuilder prefix, Queue<String> queue) {
+		if (x == null) return;
+		collect(x.left,  prefix, queue);
+		if (x.val != null) queue.add(prefix.toString() + x.character);
+		collect(x.mid,   prefix.append(x.character), queue);
+		prefix.deleteCharAt(prefix.length() - 1);
+		collect(x.right, prefix, queue);
 	}
 
 
