@@ -218,12 +218,12 @@ public class TernarySearch<Value>
 
 
 		String userInput  =  JOptionPane.showInputDialog("Please Enter The Bus Stop Name You Wish To Search For");
-
+                String input = userInput.toUpperCase();
 		
 
-		if(trie.contains(userInput))
+		if(trie.contains(input))
 		{
-			JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + userInput + "\n" + trie.get(userInput));
+			JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + input + "\n" + trie.get(input));
 
 		}
 		else
@@ -278,11 +278,12 @@ public static void fewCharSearch()
 
 
 		String userInput2 =  JOptionPane.showInputDialog("Please Enter First Word Of Bus Stop Name You Wish To Search For");
+		String input = userInput2.toUpperCase();
 
 
-		if(tree.contains(userInput2))
+		if(tree.contains(input))
 		{
-			JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + userInput2 + "\n" + tree.get(userInput2));
+			JOptionPane.showMessageDialog(null, "Full Bus Stop Information for Specified Stop Name: " + "\n" + input + "\n" + tree.get(input));
 
 		}
 		else
@@ -293,9 +294,6 @@ public static void fewCharSearch()
 		}
 
 	}
-
-
-
 
 	private static class tstNode<Value> 
 	{
