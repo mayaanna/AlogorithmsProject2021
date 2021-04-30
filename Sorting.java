@@ -144,7 +144,10 @@ public class Sorting {
 				
 				    if(userInput.equals(arrivalTime))
 				    {
-					output.add(line + "\n");	
+					output.add("Trip ID: " + stops[0] + " " + "Arrival Time: " + arrivalTime + " " +
+						   "Departure Time: " + stops[2] + " " + "Stop ID: " + stops[3] + " " + 
+						   "Stop Sequence" + stops[4] + " " + "Stop Headsign: " + stops[5] + " " + "Pickup Type:
+						   " + stops[6] + " " + "Drop-off Type: " + stops[7] + " " + "Shape Distance Traveleved" + stops[8] + "\n");		
 				    }
 				else
 				{
