@@ -55,7 +55,14 @@ public class GUIFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+					
+				try {
+					ShortestPath.printShortestPath();
+				} 
+				catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
+					
 					
 			}
 		});
