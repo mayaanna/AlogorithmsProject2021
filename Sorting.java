@@ -173,7 +173,7 @@ public class Sorting {
 		JOptionPane.showMessageDialog(null, "Here is a list of all trips arriving at your given time: " + "\n" + Arrays.toString(output.toArray()).replace("[","").replace("]","").replace(", ",""));
 	}
 		
-		System.exit(0);
+		
 
 	}
 		
