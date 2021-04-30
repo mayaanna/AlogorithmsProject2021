@@ -151,6 +151,7 @@ public class Sorting {
 				    }
 				else
 				{
+					valid = false;
 					JOptionPane.showMessageDialog(null, "Invalid Time Entered");
 					break;
 				}	
